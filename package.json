@@ -1,0 +1,14 @@
+{
+  "name": "devbackend",
+  "version": "1.0.0",
+  "description": "'will write backend code for this app'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "prashant gupta",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
