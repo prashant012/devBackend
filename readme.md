@@ -15,5 +15,10 @@
 - install nodemon for not starting and stoping server again and again and to get refrshed data
 - npm i -g nodemon // -g help us to install it global level we might get some error
 - sudo npm i -g nodemon 
+- https://stackoverflow.com/questions/63423584/how-to-fix-error-nodemon-ps1-cannot-be-loaded-because-running-scripts-is-disabl
+- if you face any error follow the above guide line set the execution policy
+- Get-ExecutionPolicy
+- Set-ExecutionPolicy Unrestricted
+- Now try to run nodemon on your project 'nodemon src/app.js'
 
 - to initialize git --git init

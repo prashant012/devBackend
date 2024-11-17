@@ -1,0 +1,5 @@
+- why you pushed lock.json in remote?
+- what are the dependencies?
+- what is the use of -g while npm install ?
+- what are request handlers ?
+- diff bw package.json & package-lock.json ?

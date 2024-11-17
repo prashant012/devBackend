@@ -8,11 +8,27 @@ const express = require('express');
 const app = express();
 
 // we have to crreate request handler
-app.use((req, res) => {
-    res.send('hello from the server....');
-})
+// app.use((req, res) => {
+//     res.send('hello from the server....');
+// })
 
 //above handler is like for all those req it will send 'hello from the server' as we not configure for some route
+
+// this will only handle the get call to /user
+app.get("/user", (req, res) => {
+    res.send({firstName : 'Prashant', lastName: 'Gupta'});
+});
+
+app.post("/user", async (req, res) => {
+    console.log(req.body);
+    res.send('data successfully saved to the server');
+})
+
+app.delete("/user", async (req, res) => {
+    console.log(req.body);
+    res.send('your data is deleted');
+})
+
 
 // it is listenning to PORT 3000,
 app.listen(3000, () => {
