@@ -1,26 +1,25 @@
-// now create server
-
 const express = require('express');
-const { adminAuth, userAuth } = require('./middleWare/auth');
-
 const app = express();
 
-//middlware 
-//below is the adminauth middleware
-app.use("/admin", adminAuth);
 
-// we can also create some login api which don't need auth right as user is alredy login
-// we dont need restriction over here
-app.post("/user/login", (req, res, next) => {
-    res.send('user is successfully logged in');
+app.get('/getUserData', (req, res) => {
+    try {
+        // logic of DB can get usre data it might fail 
+        throw new Error("Error occured 111");
+       res.send("user Data sent");
+    } catch(err) {
+       res.status(500).send('soem error occured');
+    }
 })
 
-// this will only handle the get call to /user
-app.get("/user", userAuth, (req, res) => {
-    res.send('user is authenticated');
-});
+app.use("/", (err, req, res, next) => {
+    if(err) {
+        // log your error
+        res.status(500).send('something went wrong');
+    }
+})
 
-// above we are checking user and authenticating by using userAuth middleware.
+
 
 // it is listenning to PORT 3000,
 app.listen(3000, () => {
