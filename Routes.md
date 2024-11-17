@@ -11,4 +11,41 @@
 - we can achieve it by using req.query
 - how to handle the dynamic routes
 - /user/:userid -- req.params
-- /user/:userid/:passowrd/:add/:city -- by this we can make it more complex and dynamic more 
+- /user/:userid/:passowrd/:add/:city -- by this we can make it more complex and dynamic more
+
+- multiple route handlers - play with them
+- next()
+- next function & routes along with res.send();
+- app.use('/route', rH, [nH2, rH3], nH4, nH5);
+- what is a middleware?
+- how express JS  basically handlers  request behind the scene?
+- it will keep on going to middleWare and middle ware till it is sending the response. 
+- which is actually sending the response back.
+
+app.use('/', (req, res, next) => {
+// res.send("handling the route");
+next();
+});
+
+app.get("/user", (req, res, next) => {
+	console.log('handling the /user route');
+next();
+},
+(req, res, next) => {
+	console.log('handling the /user route');
+next();
+},
+(req, res, next) => {
+	console.log('handling the /user route');
+next();
+},
+(req, res, next) => {
+	console.log('handling the /user route');
+res.send('hello from the server');
+}
+);
+
+- why we need middleware?
+- by using middleware we can customised our call chain or req to server before its even executing
+- we can authenticate the user 
+

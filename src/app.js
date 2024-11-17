@@ -1,42 +1,28 @@
 // now create server
 
 const express = require('express');
-
-// this is the instance of the express application.
-// this is creaeting the new web server using express.
+const { adminAuth, userAuth } = require('./middleWare/auth');
 
 const app = express();
 
-// we have to crreate request handler
-// app.use((req, res) => {
-//     res.send('hello from the server....');
-// })
+//middlware 
+//below is the adminauth middleware
+app.use("/admin", adminAuth);
 
-//above handler is like for all those req it will send 'hello from the server' as we not configure for some route
+// we can also create some login api which don't need auth right as user is alredy login
+// we dont need restriction over here
+app.post("/user/login", (req, res, next) => {
+    res.send('user is successfully logged in');
+})
 
 // this will only handle the get call to /user
-app.get("/user/:userid", (req, res) => {
-    //console.log('req.query', req.query);
-    console.log('req.params',req.params);
-    res.send({firstName : 'Prashant', lastName: 'Gupta'});
+app.get("/user", userAuth, (req, res) => {
+    res.send('user is authenticated');
 });
 
-app.post("/user", async (req, res) => {
-    console.log(req.body);
-    res.send('data successfully saved to the server');
-})
-
-app.delete("/user", async (req, res) => {
-    console.log(req.body);
-    res.send('your data is deleted');
-})
-
+// above we are checking user and authenticating by using userAuth middleware.
 
 // it is listenning to PORT 3000,
 app.listen(3000, () => {
     console.log('serve is listening to PORT 3000 ....');
 });
-
-// above we hve crrated a server which is listening to port 3000. here it is not doing anything
-// now we have to listen to some port app.listen(PORT, () => {}) this CB will only be executing when 
-// it iwill only be called when your server up and running
