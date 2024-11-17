@@ -1,0 +1,14 @@
+- exploring routing and use of ?, +, (), * in the routes.
+- /user/ab?c - her ? is after 'b' so b char is optional user can include or leave it
+- /ab+c  - here a, c will be fixed and 'b' can come n number of times.
+- /a(bc)?d or /a(bc)+d - for first bc wil be optional & in 2nd bc can come any number of times.
+- /a/ this is a regex pattern if /abc/ or /car/ or anything come it will work.    
+- /.*fly$/ anything start with anything but end with fly it match the url
+- order of route handler matter a lot
+- e.g. app.use('/user', () => {}) it will match all and send the response.
+- query paramas is also there
+- /user?userid=101
+- we can achieve it by using req.query
+- how to handle the dynamic routes
+- /user/:userid -- req.params
+- /user/:userid/:passowrd/:add/:city -- by this we can make it more complex and dynamic more 

@@ -15,7 +15,9 @@ const app = express();
 //above handler is like for all those req it will send 'hello from the server' as we not configure for some route
 
 // this will only handle the get call to /user
-app.get("/user", (req, res) => {
+app.get("/user/:userid", (req, res) => {
+    //console.log('req.query', req.query);
+    console.log('req.params',req.params);
     res.send({firstName : 'Prashant', lastName: 'Gupta'});
 });
 
